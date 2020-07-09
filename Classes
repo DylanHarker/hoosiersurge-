@@ -1,0 +1,79 @@
+# The Course Class
+class Course:
+    def __init__(self, courseName, days, startTime, endTime):
+        self.courseName = courseName
+        self.days = days
+        self.startTime = startTime
+        self.endTime = endTime
+    # Print Method
+    def __str__(self):
+        return "Course Name: %s \n" \
+               "Meeting Days: %s \n" \
+               "Start Time: %s \n" \
+               "End Time: %s" % (self.courseName, self.days, self.startTime, self.endTime)
+
+# Method used to create a new course from user input
+def user_input_course():
+    courseName = input('Course Name: ')
+    days = input('Meeting days (in MTWHF format): ')
+    startTime = input('Start Time: ')
+    endTime = input('End Time: ')
+    course = Course(courseName, days, startTime, endTime)
+    return course
+
+# Method to print a list of courses that does not belong to a student
+def print_courses(list):
+    for course in list:
+        print(course)
+
+
+# The Student Class
+class Student:
+    def __init__(self, FName, LName, major, PNumber, email, courses):
+        self.FName = FName
+        self.LName = LName
+        self.major = major
+        self.PNumber = PNumber
+        self.email = email
+        self.courses = courses
+    # Print Method
+    def __str__(self):
+        return "Name: %s %s \n" \
+               "Major: %s \n" \
+               "Phone Number: %s \n" \
+               "Email: %s" % (self.FName, self.LName, self.major, self.PNumber, self.email)
+
+    def get_courses(self):
+        print("Course list for " + self.FName + " " + self.LName)
+        print("--------")
+        if self.courses is list:
+            for course in self.courses:
+                print(course)
+                print("--------")
+        else:
+            print(self.courses)
+
+# Method used to create a new student from user input
+def user_input_student():
+    FName = input('First Name: ')
+    LName = input('Last Name: ')
+    major = input('Major: ')
+    PNumber = input('Phone Number: ')
+    email = input('Email: ')
+    student = Student(FName, LName, major, PNumber, email)
+    return student
+
+
+# Creating two courses for Dylan to take
+Calc3 = Course("Calculus 3", "MWF", 1300, 1500)
+Computing = Course("Computing I", "TH", 1220, 1335)
+# Creating a list of Dylan's courses
+list = [Calc3, Computing]
+# Printing a course
+print(Calc3)
+# Creating the student "dylan"
+dylan = Student("Dylan", "Harker", "Math", "317551234", "aldsfh", list)
+# Printing dylan's information
+print(dylan)
+# Printing dylan's courses
+print(dylan.get_courses())
